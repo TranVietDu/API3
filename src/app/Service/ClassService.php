@@ -13,7 +13,12 @@ class ClassService
     }
     public function store(Request $request)
     {
-        return Classs::create($request->all());
+        $request->validate([
+            'nameclass'=>'required',
+        ]);
+        $class=new Classs();
+        $class->nameclass=$request->nameclass;
+        $class->save();
     }
     public function show(Classs $classs)
     {
@@ -21,8 +26,11 @@ class ClassService
     }
     public function update(Request $request,Classs $classs)
     {
-        $classs->update($request->all());
-        return $classs;
+         $request->validate([
+            'nameclass'=>'required',
+        ]);
+        $classs->nameclass=$request->nameclass;
+        $classs->save();
     }
     public function countNumberInClass(Classs $classs)
     {
