@@ -28,14 +28,14 @@ Route::get('lknn/{classs}', 'ClassController@nnCountStudentOnClass');
 Route::get('allstudents', 'ClassController@allClassStudent')->name('all');
 Route::get('showclass/{classs}', 'ClassController@showClass');
 Route::patch('restore/{students}', 'StudentController@restore');
+Route::get('homeadmin','AdminController@index');
+Route::get('studentss','Studentcontroller@index')->name('student');
+Route::post('studentss','Studentcontroller@store')->name('store');
+Route::get('class','ClassController@index')->name('class');
+Route::get('create','StudentController@create')->name('create');
+Route::delete('studentss/{student}','StudentController@destroy')->name('student.destroy');
 });
 
-Route::get('homeadmin','App\Http\Controllers\AdminController@index');
-Route::get('studentss','App\Http\Controllers\Studentcontroller@index')->name('student');
-Route::post('studentss','App\Http\Controllers\Studentcontroller@store')->name('store');
-Route::get('class','App\Http\Controllers\ClassController@index')->name('class');
-Route::get('create','App\Http\Controllers\StudentController@create')->name('create');
-Route::delete('student/{student}','App\Http\Controllers\StudentController@destroy')->name('student.destroy');
 
 
 
