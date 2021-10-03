@@ -9,13 +9,25 @@ class StudentService
        return Student::all();
     }
     public function store(Request $request){
-        return Student::create($request->all());
+        $request->validate([
+            'name'=>'required',
+            'age'=>'required',
+        ]);
+        $student=new Student;
+        $student->name=$request->name;
+        $student->age=$request->age;
+        $student->save();
     }
     public function showStudent(Student $student){
         return Student::find($student);
     }
     public function update(Request $request,Student $student){
-        $student->update($request->all());
-        return $student;
+          $request->validate([
+            'name'=>'required',
+            'age'=>'required',
+        ]);
+        $student->name=$request->name;
+        $student->age=$request->age;
+        $student->save();
     }
 }
